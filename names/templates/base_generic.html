@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %} ThePost {% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+    <!-- Add additional CSS in static file -->
+	<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchihttps://googleads.g.doubleclick.net/pcs/click?xai=AKAOjsvZHmFtPl2EfV6xeEB4-2CzZ2qPy2u0ht2XEDWNFpHNjX_Mc_WSDuesiRm5-wtJXo4TfgxVlJ6zoXMTg1KRweC1LhiC0vM2Kz-x5-02ziP25O7TzVjiHfEfX3vQePvk1-5Zli039Hud5vJV1KxiFu__0d1iYUn2ZAn97nEKUvWkoS_b6qDKUf-WSbWjxtDniMvIYGZQGWUtILj7WPn_-PndGIwinNnKUU6ekna8DDJD8Cmfix_NQkTQ&sig=Cg0ArKJSzDrSDSkr-vf2&adurl=https://www.w3schools.com/w3css/w3css_templates.asp&nm=5&nx=93&ny=-7&mb=1con.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+ @media only screen and (min-width: 500px){
+        .navbar-nav{
+          float: right;
+        }
+        #id{
+          font-size: 1.2em;
+        }
+      }
+</style>
+</head>
+
+
+<body>
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="{% url 'Index' %}">ThePost</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav" style="float: right;">
+      <li><a href="{% url 'all_post' %}"><span class="glyphicon glyphicon-align-left" aria-hidden="true"> Feed </span></a></li>
+      <li><a href="{% url 'Index' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"> Add Post</span></a></li>
+      <li><a href="{% url 'Index' %}"><span class="glyphicon glyphicon-eject" aria-hidden="true"> Trending</span></a></li>
+      <li><a href="{% url 'add_name' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"> New Person</span></a></li>
+
+    </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+<!-- This will include the main block -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+      
+    </div>
+    <div class="col-sm-4">
+      {% block content%} {% endblock %}
+      <div class="tedmosby"> 
+        <hr>
+  <center><h4> Courtsey @ Ted_Mosby </h4></center>
+  <hr>
+</div>
+    </div>
+    
+  </div>
+
+</div>
+
+</body>
+
+
+</html>

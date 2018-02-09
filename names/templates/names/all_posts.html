@@ -1,0 +1,33 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+{% for p in posts %}
+<hr>
+<strong style="display: inline;">For : </strong><h4 style="display: inline; color: red;">{{p.name}}</h4>
+&nbsp &nbsp <b><p style="display: inline;">{{p.name.branch}} </p></b> &nbsp &nbsp <p style="display: inline;">{{p.name.year}} Year </p> 
+<br>
+<br>
+<p style="display: inline;">{{p.post}}</p> 
+<br>
+<hr>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">next</a>
+<!--             <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a> -->
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

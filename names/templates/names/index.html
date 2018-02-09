@@ -1,0 +1,42 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<center><h2 id="theheader">The Trending Board</h2></center>
+<hr>
+<b> To add a person, click  link </b>
+<a href='add/new_person'>Add a New Person</a>
+<h6>Search a name and post for it . Names are in order of popularity. </h6>
+<h4> Click On Person's Name to add a post ! </h4>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+<ul id="myUL">
+{% for n in names %}
+
+  <li><a href="{{n.id}}">{{forloop.counter}} . {{n.name}} &nbsp <h6 style="display: inline;">{{n.branch}}  {{n.year}} Year </h6>&nbsp &nbsp &nbsp<h6 style="display: inline;"> ({{n.num_posts}} Posts) </h6></a></li>
+  {% endfor %}
+</ul>
+
+
+<!-- This includes the script for the page -->
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }
+}
+</script>
+
+
+{% endblock %}
